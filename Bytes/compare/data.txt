@@ -1,0 +1,6 @@
+#Prefetching Depth,Client Side Radiomap, Bytes(bba),Bytes(cba)
+0	0	0	0
+1	343924	17418	17418
+2	343924	30293	30293
+3	343924	45163	45182
+

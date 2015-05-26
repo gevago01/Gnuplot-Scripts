@@ -1,0 +1,6 @@
+#Prefetching Depth, Mean Absolute Error
+0	0
+1	9.155407E-5
+2	6.9139685E-5
+3	4.9975002E-5
+

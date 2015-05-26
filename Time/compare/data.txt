@@ -1,0 +1,6 @@
+#Prefetching Depth,Time-Client Side Radiomap, Time(bba),Time(cba)
+0	0	0	0
+1	1093	264	169
+2	1093	351	240
+3	1093	942	255
+
