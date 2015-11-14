@@ -1,0 +1,5 @@
+#Method, number of pairs
+Content-based	588
+Pool size	118615
+All doc. pairs	30492484
+
