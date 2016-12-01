@@ -1,0 +1,2 @@
+#Num of queries, Query path length
+1 312 43 77 37 12 11 4 1 2 1 
