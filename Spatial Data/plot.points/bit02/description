@@ -1,0 +1,3 @@
+bito0new.txt: the output of the converter
+shuffled_points.txt: shuffled file without blank lines
+60k.txt: a sample of the shuffled_points.txt file
