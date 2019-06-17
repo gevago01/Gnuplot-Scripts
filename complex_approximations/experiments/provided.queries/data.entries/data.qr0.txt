@@ -1,0 +1,10 @@
+#Dataset,R*-Tree, RR*-Tree,HR-Tree, QR-Tree,	# Grid size = 1000
+abs02	1
+bit02	1
+dia02	1
+par02	1
+ped02	0.363502775
+pha02	1
+rea02	1
+uni02	1
+

@@ -1,0 +1,9 @@
+#INsertRecord | MakeGrid
+abs02	0.3	0.7
+bit02	0.78	0.22
+dia02	0.88	0.12
+par02	0.45	0.55
+ped02	0.68	0.32
+pha02	0.75	0.25
+rea02 	0.76	0.24
+uni02 	0.68	0.32

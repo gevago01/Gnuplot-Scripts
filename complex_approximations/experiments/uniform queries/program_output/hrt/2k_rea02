@@ -1,0 +1,509 @@
+
+##   --- TestRSTree ---  important notes:
+## - This testprogram chiefly maintains a single "main" tree only. Exception:
+##   Joins, which work on the main tree and a secondary tree, and must be
+##   initialized by (re)opening/loading one of the trees as main tree first.
+##   The testprogram keeps secondary trees open until some join finishes.
+## - If an error occurs, the corresponding procedure does nothing but emitting
+##   a message, thus a great many of the actions may be retried (after enough
+##   non harmful failures).
+## - Damage protection for active trees: The following operations:
+##   "Create"(c, C), "Open"(o, O), "MainCreate"(m), "Load"(l) and "quit"(q)
+##   automatically close disk residing trees, whereas main memory trees must be
+##   killed (K) before these operations may be performed.
+## NOTE that "Create"(c, C) removes a disk residing tree with the same name.
+
+##   Create = "c",       Create buffered = "C",            MainCreate = "m",
+##     Open = "o",         Open buffered = "O",                  Load = "l",
+##    Close = ".",                                               Save = "s",
+##                 Remove = "R"                              MainKill = "K",
+##       Synchronize tree = "S",
+##    Get Synchronization = "G",
+##            Inquire Description = "I",
+##     Examine stored Description = "E",
+##             Compute page sizes = "`",
+##                leave this menu = "-",
+##                           quit = "q".
+Choice: 
+DataName | TreeName (omit ".RSF"):  dirRAMsize: dataRAMsize: Size of a directory page:      Size of a data page:     Number of dimensions:  Size of information tag: Unique?, (y/n): Open Data File:
+data/rea02
+Computing maximum bounding box:
+Number of records: 1888012
+Close Data File:
+data/rea02
+CreateMainMemRST(4096,4096,2,4,0,MaxBB,10000000,200000000,1):
+Done
+
+ directory page size: 4096
+      data page size: 4096
+number of dimensions: 2
+information tag size: 4
+              unique: 0
+OneDKey resolution:
+64 bits overall,
+32 bits per dimension,
+4294967296 = maximum grid position.
+Maximum bounding box:
+dimension   0: -1.2440656600000001e+02 .. -1.1413364699999998e+02
+dimension   1:  3.2540256999999990e+01 ..  4.2009240000000005e+01
+The tree is empty.
+
+
+##              Insert = "i",                Delete = "d",
+##                   ExistsRegion = "x",
+##     ExactMatchCount = "e",       ExactMatchQuery = "E",
+##         RegionCount = "r",           RegionQuery = "[",
+##    SpatialJoinCount = "j",           SpatialJoin = "=",
+##          XJoinCount = "J",                 XJoin = "#",
+##       n-NearestTest = "N",         DistanceQuery = "D",
+##               CheckConsistency = "C",
+##                      PathsDump = "P",
+##                      ASCIIdump = "A",
+##                   DirLevelDump = "L",
+##            MediaReorganization = "M",
+##                leave this menu = "-".
+Choice: Open Data File:
+data/rea02
+
+Execution from/to entrynumber?
+("1 n": first up to n-th, "n 0": n-th up to last,
+ "1 0" | "0 0": first up to last entry.)
+Input: Message if done/match ="d", not done/match ="n", message off ="o"
+Input: Feed Back at entrynumber MODULO m (m = 0: only at the end).
+m = 100000::  height:  3
+200000::  height:  3
+300000::  height:  4
+400000::  height:  4
+500000::  height:  4
+600000::  height:  4
+700000::  height:  4
+800000::  height:  4
+900000::  height:  4
+1000000::  height:  4
+1100000::  height:  4
+1200000::  height:  4
+1300000::  height:  4
+1400000::  height:  4
+1500000::  height:  4
+1600000::  height:  4
+1700000::  height:  4
+1800000::  height:  4
+1888012::  height:  4
+
+Building the grid
+cell_area: Area of each 2D cell:0.000024
+grid
+
+Zeroes:3070179. Ones 929821. Zeroes + Ones: 4000000. Undefined:0
+Grid size:2000.dead space percentage:0.76754474999999999785
+
+                          numbCalls: 1888012
+
+TOTAL dirDemands: 3517811
+TOTAL dataDemands: 1921836
+TOTAL Demands: 5439647
+TOTAL dirGets: 121706
+TOTAL dataGets: 526117
+TOTAL Gets: 647823
+TOTAL dirReads: 0
+TOTAL dataReads: 0
+TOTAL Reads: 0
+
+                     dirDemands/CALL: 1.86e+00
+                    dataDemands/CALL: 1.02e+00
+                        Demands/CALL: 2.88e+00
+
+                        dirGets/CALL: 6.45e-02
+                       dataGets/CALL: 2.79e-01
+                           Gets/CALL: 3.43e-01
+
+                       dirReads/CALL: 0.00e+00
+                      dataReads/CALL: 0.00e+00
+                          Reads/CALL: 0.00e+00
+
+                     dirReads/dirGet: 0.00e+00
+                   dataReads/dataGet: 0.00e+00
+                           Reads/Get: 0.00e+00
+
+TOTAL dirPuts: 41151
+TOTAL dataPuts: 526117
+TOTAL Puts: 567268
+TOTAL dirWrites: 0
+TOTAL dataWrites: 0
+TOTAL Writes: 0
+
+                        dirPuts/CALL: 2.18e-02
+                       dataPuts/CALL: 2.79e-01
+                           Puts/CALL: 3.00e-01
+
+                      dirWrites/CALL: 0.00e+00
+                     dataWrites/CALL: 0.00e+00
+                         Writes/CALL: 0.00e+00
+
+                    dirWrites/dirPut: 0.00e+00
+                  dataWrites/dataPut: 0.00e+00
+                          Writes/Put: 0.00e+00
+
+TOTAL dirIOs: 162857
+TOTAL dataIOs: 1052234
+TOTAL IOs: 1215091
+TOTAL dirAccesses: 0
+TOTAL dataAccesses: 0
+TOTAL Accesses: 0
+
+                         dirIOs/CALL: 8.63e-02
+                        dataIOs/CALL: 5.57e-01
+                            IOs/CALL: 6.44e-01
+
+                    dirAccesses/CALL: 0.00e+00
+                   dataAccesses/CALL: 0.00e+00
+                       Accesses/CALL: 0.00e+00
+
+                   dirAccesses/dirIO: 0.00e+00
+                 dataAccesses/dataIO: 0.00e+00
+                         Accesses/IO: 0.00e+00
+
+TOTAL dirOverflows: 635
+TOTAL dataOverflows: 33909
+TOTAL Overflows: 34544
+TOTAL dirUnderflows: 0
+TOTAL dataUnderflows: 0
+TOTAL Underflows: 0
+TOTAL dirReInsertCalls: 0
+TOTAL dataReInsertCalls: 0
+TOTAL ReInsertCalls: 0
+TOTAL dirSplits: 635
+TOTAL dataSplits: 33909
+TOTAL Splits: 34544
+TOTAL dirS_Area0: 0
+TOTAL dataS_Area0: 0
+TOTAL S_Area0: 0
+
+                   dirOverflows/CALL: 3.36e-04
+                  dataOverflows/CALL: 1.80e-02
+                      Overflows/CALL: 1.83e-02
+
+              ReInsertCalls/Overflow: 0.00e+00
+                     Splits/Overflow: 1.00e+00
+
+                 dirS_Area0/dirSplit: 0.00e+00
+               dataS_Area0/dataSplit: 0.00e+00
+                       S_Area0/Split: 0.00e+00
+
+                  dirUnderflows/CALL: 0.00e+00
+                 dataUnderflows/CALL: 0.00e+00
+                     Underflows/CALL: 0.00e+00
+
+                    Splits/Underflow: -
+
+TOTAL ChooseSubtreeCalls: 0
+TOTAL NoFit: 0
+TOTAL UniqueFit: 0
+TOTAL SomeFit: 0
+TOTAL OvlpEnlOpt: 0
+TOTAL OvlpEnlComput: 0
+TOTAL P: 0
+  MAX P: 0
+TOTAL PminusQ: 0
+TOTAL InstantOvlpEnl0: 0
+TOTAL ManagedOvlpEnl0: 0
+TOTAL Area0: 0
+
+             ChooseSubtreeCalls/CALL: 0.00e+00
+                  OvlpEnlComput/CALL: 0.00e+00
+
+             NoFit/ChooseSubtreeCall: -
+         UniqueFit/ChooseSubtreeCall: -
+           SomeFit/ChooseSubtreeCall: -
+        OvlpEnlOpt/ChooseSubtreeCall: -
+     OvlpEnlComput/ChooseSubtreeCall: -
+             Area0/ChooseSubtreeCall: -
+
+               InstantOvlpEnl0/NoFit: -
+                    OvlpEnlOpt/NoFit: -
+               ManagedOvlpEnl0/NoFit: -
+
+                        P/OvlpEnlOpt: -
+          ManagedOvlpEnl0/OvlpEnlOpt: -
+
+      P/(OvlpEnlOpt-ManagedOvlpEnl0): -
+PminusQ/(OvlpEnlOpt-ManagedOvlpEnl0): -
+      Q/(OvlpEnlOpt-ManagedOvlpEnl0): -
+
+TOTAL 4096bytes admDirReads: 0
+TOTAL 4096bytes admDataReads: 0
+TOTAL 4096bytes admReads: 0
+
+                     adminReads/Read: -
+
+TOTAL 4096bytes admDirWrites: 0
+TOTAL 4096bytes admDataWrites: 0
+TOTAL 4096bytes admWrites: 0
+
+                   adminWrites/Write: -
+
+Platform:  Unix:     user time   system time   wallclock time
+Support:                YES          YES            YES
+
+Assumptions:
+Assumed access time: 5.00e-03 [s]
+
+Times under ACCESS-TIME ASSUMPTIONS in seconds:
+virtual:         user time:      1.32
+profile:  user+system time:      1.54
+real:      wall clock time:      7.01
+access:        access time:   5261.17
+total:    user+access time:   5262.49
+
+                       userTime/CALL: 6.99e-07
+                    profileTime/CALL: 8.14e-07
+                  wallClockTime/CALL: 3.71e-06
+                     accessTime/CALL: 2.79e-03
+                  (user+access)/CALL: 2.79e-03
+
+Close Data File:
+data/rea02
+
+##   Create = "c",       Create buffered = "C",            MainCreate = "m",
+##     Open = "o",         Open buffered = "O",                  Load = "l",
+##    Close = ".",                                               Save = "s",
+##                 Remove = "R"                              MainKill = "K",
+##       Synchronize tree = "S",
+##    Get Synchronization = "G",
+##            Inquire Description = "I",
+##     Examine stored Description = "E",
+##             Compute page sizes = "`",
+##                leave this menu = "-",
+##                           quit = "q".
+Choice:               name: MAIN_MEMORY
+    subtreePtrSize: 4
+          infoSize: 4
+  numbOfDimensions: 2
+       dirPageSize: 4096
+      dataPageSize: 4096
+    netDirPageSize: 4088
+   netDataPageSize: 4088
+      dirEntrySize: 48
+     dataEntrySize: 48
+      maxDirFanout: 85
+     maxDataFanout: 85
+      minDirFanout: 43
+     minDataFanout: 43
+     minDirDELrest: 43
+    minDataDELrest: 43
+    numbOfDirPages: 638
+   numbOfDataPages: 33910
+       numbOfPages: 34548
+     numbOfRecords: 1888012
+         rootLevel: 3
+            unique: 0
+pages per level:
+         1        11       626     33910
+Space utilization:
+1.29e-01 6.70e-01 6.37e-01 6.55e-01 
+    avg spc util dir (without root): 6.53e-01
+avg spc util overall (without root): 6.54e-01
+
+##              Insert = "i",                Delete = "d",
+##                   ExistsRegion = "x",
+##     ExactMatchCount = "e",       ExactMatchQuery = "E",
+##         RegionCount = "r",           RegionQuery = "[",
+##    SpatialJoinCount = "j",           SpatialJoin = "=",
+##          XJoinCount = "J",                 XJoin = "#",
+##       n-NearestTest = "N",         DistanceQuery = "D",
+##               CheckConsistency = "C",
+##                      PathsDump = "P",
+##                      ASCIIdump = "A",
+##                   DirLevelDump = "L",
+##            MediaReorganization = "M",
+##                leave this menu = "-".
+Choice: 
+DataName: Open Query File:
+data/rea02_GS_1000_QR
+
+Execution from/to entrynumber?
+("1 n": first up to n-th, "n 0": n-th up to last,
+ "1 0" | "0 0": first up to last entry.)
+Input: Message if done/match ="d", not done/match ="n", message off ="o"
+Input: Feed Back at entrynumber MODULO m (m = 0: only at the end).
+m =  10000::  height:  4  match:   457
+ 20000::  height:  4  match:  3560
+ 30000::  height:  4  match: 15628
+ 40000::  height:  4  match: 25649
+ 50000::  height:  4  match: 33378
+ 60000::  height:  4  match: 43051
+ 70000::  height:  4  match: 53295
+ 80000::  height:  4  match: 62618
+ 90000::  height:  4  match: 72406
+100000::  height:  4  match: 81516
+110000::  height:  4  match: 90037
+120000::  height:  4  match:101693
+130000::  height:  4  match:111011
+140000::  height:  4  match:122987
+150000::  height:  4  match:141386
+160000::  height:  4  match:161046
+170000::  height:  4  match:186421
+180000::  height:  4  match:210389
+190000::  height:  4  match:245552
+200000::  height:  4  match:289051
+210000::  height:  4  match:343923
+220000::  height:  4  match:394000
+230000::  height:  4  match:449044
+240000::  height:  4  match:518676
+250000::  height:  4  match:579535
+260000::  height:  4  match:628215
+270000::  height:  4  match:662254
+280000::  height:  4  match:699013
+290000::  height:  4  match:739917
+300000::  height:  4  match:785441
+310000::  height:  4  match:838845
+320000::  height:  4  match:872278
+330000::  height:  4  match:913340
+340000::  height:  4  match:958983
+350000::  height:  4  match:1003999
+360000::  height:  4  match:1040709
+370000::  height:  4  match:1082476
+380000::  height:  4  match:1120064
+390000::  height:  4  match:1160076
+400000::  height:  4  match:1197796
+410000::  height:  4  match:1231427
+420000::  height:  4  match:1265990
+430000::  height:  4  match:1297779
+440000::  height:  4  match:1317960
+450000::  height:  4  match:1347756
+460000::  height:  4  match:1381884
+470000::  height:  4  match:1402656
+480000::  height:  4  match:1421296
+490000::  height:  4  match:1440682
+500000::  height:  4  match:1466365
+510000::  height:  4  match:1493513
+520000::  height:  4  match:1520171
+530000::  height:  4  match:1555202
+540000::  height:  4  match:1580757
+550000::  height:  4  match:1599196
+560000::  height:  4  match:1612993
+570000::  height:  4  match:1636243
+580000::  height:  4  match:1674465
+590000::  height:  4  match:1732550
+600000::  height:  4  match:1794864
+610000::  height:  4  match:1856753
+620000::  height:  4  match:1910896
+630000::  height:  4  match:1970820
+640000::  height:  4  match:2028153
+650000::  height:  4  match:2072600
+660000::  height:  4  match:2118396
+670000::  height:  4  match:2148284
+680000::  height:  4  match:2173545
+690000::  height:  4  match:2215227
+700000::  height:  4  match:2277254
+710000::  height:  4  match:2331914
+720000::  height:  4  match:2381579
+730000::  height:  4  match:2414534
+740000::  height:  4  match:2434879
+750000::  height:  4  match:2447453
+760000::  height:  4  match:2459022
+770000::  height:  4  match:2475833
+780000::  height:  4  match:2494721
+790000::  height:  4  match:2511042
+800000::  height:  4  match:2522016
+810000::  height:  4  match:2531060
+820000::  height:  4  match:2538917
+830000::  height:  4  match:2547795
+840000::  height:  4  match:2552197
+850000::  height:  4  match:2557880
+860000::  height:  4  match:2565481
+870000::  height:  4  match:2577741
+880000::  height:  4  match:2585502
+890000::  height:  4  match:2590886
+900000::  height:  4  match:2594483
+910000::  height:  4  match:2598028
+920000::  height:  4  match:2600988
+930000::  height:  4  match:2604181
+940000::  height:  4  match:2608406
+950000::  height:  4  match:2612998
+960000::  height:  4  match:2618682
+970000::  height:  4  match:2621294
+980000::  height:  4  match:2622965
+990000::  height:  4  match:2623622
+1000000::  height:  4  match:2624057
+empty queries: 706265
+rectangles found: 2624057
+
+Dead area counter:
+futile visits:301259
+worthy visits:470222
+total leaf node:accesses:771481
+                          numbCalls: 1000000
+
+MIN(found): 0
+MAX(found): 423
+AVG(found): 2.62e+00
+VAR(found): 1.27e+02
+ SD(found): 1.13e+01
+NSD(found): 4.29e+00
+
+TOTAL dirComparisons: 79604590
+TOTAL dataComparisons: 44644486
+TOTAL Comparisons: 124249076
+
+                 dirComparisons/CALL: 7.96e+01
+                dirComparisons/FOUND: 3.03e+01
+                dataComparisons/CALL: 4.46e+01
+               dataComparisons/FOUND: 1.70e+01
+                    Comparisons/CALL: 1.24e+02
+                   Comparisons/FOUND: 4.73e+01
+
+TOTAL dirDemands: 1205758
+TOTAL dataDemands: 771481
+TOTAL Demands: 1977239
+TOTAL dirGets: 949887
+TOTAL dataGets: 691662
+TOTAL Gets: 1641549
+TOTAL dirReads: 0
+TOTAL dataReads: 0
+TOTAL Reads: 0
+
+                     dirDemands/CALL: 1.21e+00
+                    dirDemands/FOUND: 4.60e-01
+                    dataDemands/CALL: 7.71e-01
+                   dataDemands/FOUND: 2.94e-01
+                        Demands/CALL: 1.98e+00
+                       Demands/FOUND: 7.54e-01
+
+                        dirGets/CALL: 9.50e-01
+                       dirGets/FOUND: 3.62e-01
+                       dataGets/CALL: 6.92e-01
+                      dataGets/FOUND: 2.64e-01
+                           Gets/CALL: 1.64e+00
+                          Gets/FOUND: 6.26e-01
+
+                       dirReads/CALL: 0.00e+00
+                      dirReads/FOUND: 0.00e+00
+                      dataReads/CALL: 0.00e+00
+                     dataReads/FOUND: 0.00e+00
+                          Reads/CALL: 0.00e+00
+                         Reads/FOUND: 0.00e+00
+
+                     dirReads/dirGet: 0.00e+00
+                   dataReads/dataGet: 0.00e+00
+                           Reads/Get: 0.00e+00
+
+Platform:  Unix:     user time   system time   wallclock time
+Support:                YES          YES            YES
+
+Assumptions:
+Assumed access time: 5.00e-03 [s]
+
+Times under ACCESS-TIME ASSUMPTIONS in seconds:
+virtual:         user time:     15.33
+profile:  user+system time:     15.47
+real:      wall clock time:     16.74
+access:        access time:   3458.31
+total:    user+access time:   3473.64
+
+                       userTime/CALL: 1.53e-05
+                    profileTime/CALL: 1.55e-05
+                  wallClockTime/CALL: 1.67e-05
+                     accessTime/CALL: 3.46e-03
+                  (user+access)/CALL: 3.47e-03
+

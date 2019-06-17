@@ -10,7 +10,7 @@ unset border
 # plot points with different symbols
 #set pointsize 1
 
-plot '20k.txt'  w p pointtype 1 linetype 9 linecolor rgb "black" notitle,
+plot 'mine_ped.txt'  w p pointtype 1 linetype 9 linecolor rgb "black" notitle,
 
 
 
